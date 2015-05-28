@@ -24,15 +24,6 @@
      $output = "301:http://".$proxy."/axis2/services/FIAPStorage?wsdl\n";
    }
 
-   //if (preg_match("/^http:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/[a-zA-Z0-9!$&*=^`|~#%'+\/?_{}-]+.xml/i", $temp[0])) {
-     //if (preg_match("/^http:\/\/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\/[a-zA-Z0-9!$&*=^`|~#%'+\/?_{}-]+/i", $temp[0])) {
-     //exec("php /etc/squid3/get1.php");
-     //exec("php /etc/squid3/get2.php");
-     //exec("php /etc/squid3/get3.php");
-     //exec("php /etc/squid3/get4.php");
-     //$output = "301:http://www.google.co.jp\n";
-   //}
-
  echo $output;
 } 
 

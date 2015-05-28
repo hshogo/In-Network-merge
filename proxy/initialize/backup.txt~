@@ -1,4 +1,0 @@
-#! /bin/sh
-
-cp /etc/squid3/* /home/denjo/Desktop/development/backup/squid3_bak_20141101
-cp /etc/squid3/* /home/denjo/Dropbox/test/
