@@ -1,0 +1,19 @@
+・センサー
+WriteGenerator1.php,WriteGenerator2.php,WriteGenerator3.php,WriteGenerator4.php
+それぞれ$storageIPをサーバー上で動かしているVMwareで動かす
+IEEE1888SDKのIPアドレスに設定して実行する
+
+
+・透過型プロキシ
+1. initialize/init.shを管理者権限で実行する
+2. /etc/squid3/url_redirect.phpの$storageIPをサーバー上で動かしている
+   VMwareで動かすIEEE1888SDKのIPアドレスに設定する
+
+
+3. sudo service squid3 restart
+4. VMwareでIEEE1888SDKを起動し、proxy以下のWriteToServer.phpの$storageIPを
+   サーバー上で動かしているVMwareで動かすIEEE1888SDKのIPアドレスに設定して
+　　　FetchAndConvertToXML.php, merge.php, WriteToServer.phpを実行する
+
+・サーバー
+VMwareを起動し、FIAPStorageを立ち上げる
