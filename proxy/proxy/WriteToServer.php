@@ -1,19 +1,6 @@
 <?php
 
 $storageIP ="192.168.0.56";
-//$storageIP ="localhost";
-
-global $pS;
-global $p;
-global $v;
-global $pointAttribute;
-global $pointSetAttribute;
-global $valueAttribute;
-global $values;
-global $points;
-global $pointSet;
-global $tag;
-global $past0;
 
 $i = 1;
 $pS = 0;
@@ -97,8 +84,8 @@ while (1) {
 function startElement($parser, $name, $attrs) {
 
 	global $past0;
-    global $inTag;
-    global $depth;
+    	global $inTag;
+    	global $depth;
 	global $pointSetAttribute;
 	global $pointAttribute;
 	global $valueAttribute;
@@ -108,23 +95,22 @@ function startElement($parser, $name, $attrs) {
 	global $values;
 	global $points;
 
-    $padTag = str_repeat(str_pad(" ", 3), $depth+2);
-    if (!($inTag == "")) {
-  	}
+   	 $padTag = str_repeat(str_pad(" ", 3), $depth+2);
+ 
 	if ($name == 'transport' || $name == 'body'){}
   	else if ($name == 'pointSet') {
 		$tag = $name;
-	    $points = array();
+	    	$points = array();
 	   	$p = 0;
-       	foreach ($attrs as $key => $value) {
-	    	$pointSetAttribute = $value;
+       		foreach ($attrs as $key => $value) {
+	    		$pointSetAttribute = $value;
                }
      	}
   	else if ($name == 'point') {
 		$tag = $name;
 		$v = 0;
 		$values = array();
-     	foreach ($attrs as $key => $value) {
+     		foreach ($attrs as $key => $value) {
 			$pointAttribute = $value;
           	}
      	}
@@ -134,20 +120,19 @@ function startElement($parser, $name, $attrs) {
 			$valueAttribute = $value;
         	}
     	}
-    else {
+    	else {
 		echo "Unkwown Contents..."."\n";
 	}
-    $inTag = $name;
-    $depth++;
-  
+    	$inTag = $name;
+    	$depth++;
 }
 
 function endElement($parser, $name) {
 
 	global $past0;
-    global $depth;
-    global $inTag;
-    global $closeTag;
+    	global $depth;
+    	global $inTag;
+    	global $closeTag;
 	global $pS;
 	global $p;
 	global $pointSet;
@@ -156,7 +141,7 @@ function endElement($parser, $name) {
 	global $pointAttribute;
 	global $pointSetAttribute;
        
-    $depth--;
+    	$depth--;
 
 	if ($name == 'body' || $name == 'transport') {}
 	else if ($name == 'pointSet') {
@@ -179,7 +164,7 @@ function endElement($parser, $name) {
 function contents($parser, $data) {
 
 	global $past0;
-    global $closeTag;
+    	global $closeTag;
 	global $point;
 	global $points;
 	global $values;
@@ -191,17 +176,17 @@ function contents($parser, $data) {
 	global $v;
 	global $p; 
 
-    $data = preg_replace("/^\s+/", "", $data);
-    $data = preg_replace("/\s+$/", "", $data);
+    	$data = preg_replace("/^\s+/", "", $data);
+    	$data = preg_replace("/\s+$/", "", $data);
 
-    if (!($data == ""))  {
+    	if (!($data == ""))  {
 		if ($tag == 'value') {
 			$values[$v]=array("time"=>$past0, "_"=>$data);
 			$v++;
 		}
-        $closeTag = TRUE;
-    } else {
-        $closeTag = FALSE;
+        	$closeTag = TRUE;
+    	} else {
+        	$closeTag = FALSE;
 	}
 }
 
